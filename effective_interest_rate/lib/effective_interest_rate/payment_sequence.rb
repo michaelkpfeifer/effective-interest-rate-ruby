@@ -1,0 +1,2 @@
+class PaymentSequence
+end
