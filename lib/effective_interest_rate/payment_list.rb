@@ -5,12 +5,18 @@ class PaymentList
     @payment_list = []
   end
 
-  def size
-    payment_list.size
+  def each
+    @payment_list.each do |payment|
+      yield payment
+    end
   end
 
   def <<(payment)
     @payment_list << payment
+  end
+
+  def size
+    payment_list.size
   end
 
   def min_date
