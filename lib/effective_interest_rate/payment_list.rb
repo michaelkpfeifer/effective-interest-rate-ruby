@@ -18,6 +18,6 @@ class PaymentList
   end
 
   def size
-    payment_list.size
+    @payment_list.size
   end
 end
