@@ -1,4 +1,6 @@
 class PaymentList
+  include Enumerable
+
   attr_accessor :payment_list
 
   def initialize
@@ -17,13 +19,5 @@ class PaymentList
 
   def size
     payment_list.size
-  end
-
-  def min_date
-    @payment_list.sort.first.date
-  end
-
-  def max_date
-    @payment_list.sort.last.date
   end
 end
