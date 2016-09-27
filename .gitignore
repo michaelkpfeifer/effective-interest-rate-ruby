@@ -1,2 +1,3 @@
 # Ignore internal status, questions, and issues
 project.org
+.byebug_history
