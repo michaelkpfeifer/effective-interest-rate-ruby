@@ -1,4 +1,4 @@
-class PaymentPoint
+class PaymentWithOffset
   include Comparable
 
   attr_accessor :amount

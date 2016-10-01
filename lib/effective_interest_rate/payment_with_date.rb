@@ -1,4 +1,4 @@
-class Payment
+class PaymentWithDate
   include Comparable
 
   attr_accessor :amount

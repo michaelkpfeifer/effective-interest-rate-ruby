@@ -1,16 +1,16 @@
 require 'test/unit'
 require 'effective_interest_rate'
 
-class PaymentPointTest < Test::Unit::TestCase
+class PaymentWithOffsetTest < Test::Unit::TestCase
   def test_order
-    payment_point1 = PaymentPoint.new(1000, 0.0)
-    payment_point2 = PaymentPoint.new(1000, 1.5)
+    payment_with_offset1 = PaymentWithOffset.new(1000, 0.0)
+    payment_with_offset2 = PaymentWithOffset.new(1000, 1.5)
 
-    assert_operator payment_point1, :<, payment_point2
-    assert_operator payment_point2, :>, payment_point1
-    assert_operator payment_point1, :<=, payment_point2
-    assert_operator payment_point2, :>=, payment_point1
-    assert_operator payment_point1, :<=, payment_point1
-    assert_operator payment_point2, :>=, payment_point2
+    assert_operator payment_with_offset1, :<, payment_with_offset2
+    assert_operator payment_with_offset2, :>, payment_with_offset1
+    assert_operator payment_with_offset1, :<=, payment_with_offset2
+    assert_operator payment_with_offset2, :>=, payment_with_offset1
+    assert_operator payment_with_offset1, :<=, payment_with_offset1
+    assert_operator payment_with_offset2, :>=, payment_with_offset2
   end
 end
