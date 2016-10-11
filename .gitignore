@@ -1,3 +1,4 @@
 .byebug_history
+.rubocop.yml
 project.org
 coverage/
