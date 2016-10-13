@@ -26,7 +26,7 @@ class PaymentWithDateListTest < Test::Unit::TestCase
     payment_with_date_list << payment_with_date2
     payment_with_date_list << payment_with_date3
     payment_with_date_list << payment_with_date1
-    assert_equal payment_with_date_list.min.date, Date.new(2011, 1, 1)
-    assert_equal payment_with_date_list.max.date, Date.new(2013, 1, 1)
+    assert_equal payment_with_date_list.min_date, Date.new(2011, 1, 1)
+    assert_equal payment_with_date_list.max_date, Date.new(2013, 1, 1)
   end
 end
