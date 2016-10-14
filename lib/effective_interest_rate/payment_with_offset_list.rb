@@ -40,6 +40,10 @@ class PaymentWithOffsetList
     @payment_with_offset_list.size
   end
 
+  def sorted_offsets
+    @payment_with_offset_list.map(&:offset).sort
+  end
+
   def effective_interest_rate
     value = 0.0
     8.times do
