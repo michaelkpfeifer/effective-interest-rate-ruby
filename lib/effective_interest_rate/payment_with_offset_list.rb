@@ -62,7 +62,7 @@ class PaymentWithOffsetList
     terms.each do |payment_with_offset|
       amount = payment_with_offset.amount
       offset = payment_with_offset.offset
-      value = value + amount * (1 + x) ** (-offset)
+      value = value + amount * (1 + x)**(-offset)
     end
     value
   end
