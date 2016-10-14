@@ -10,6 +10,6 @@ class PaymentWithDate
   end
 
   def <=>(other)
-    self.date <=> other.date
+    @date <=> other.date
   end
 end

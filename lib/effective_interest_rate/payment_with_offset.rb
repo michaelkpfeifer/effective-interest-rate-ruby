@@ -10,6 +10,6 @@ class PaymentWithOffset
   end
 
   def <=>(other)
-    self.offset <=> other.offset
+    @offset <=> other.offset
   end
 end
