@@ -2,41 +2,41 @@ class PaymentWithOffsetList
   MAX_NUM_ITERATIONS = 16
   MAX_DIFF_ITERATIONS = 10**-10
 
-  attr_accessor :payment_with_offset_list
-  attr_accessor :payment_with_offset_list_derivative
+  attr_accessor :payments
+  attr_accessor :payments_derivative
 
   def initialize(payment_with_date_list)
     first_payment_date = payment_with_date_list.min_date
     first_payment_offset = payment_offset_in_year(first_payment_date)
     first_payment_year = first_payment_date.year
 
-    @payment_with_offset_list = []
+    @payments = []
     payment_with_date_list.payment_with_date_list.each do |payment_with_date|
       payment_with_date_date = payment_with_date.date
       year_difference = payment_with_date_date.year - first_payment_year
       offset = payment_offset_in_year(payment_with_date_date)
       offset = offset + year_difference - first_payment_offset
       payment_with_offset = PaymentWithOffset.new(payment_with_date.amount, offset)
-      @payment_with_offset_list << payment_with_offset
+      @payments << payment_with_offset
     end
 
-    @payment_with_offset_list_derivative = payment_with_offset_list_derivative(@payment_with_offset_list)
+    @payments_derivative = payments_derivative(@payments)
   end
 
   def size
-    @payment_with_offset_list.size
+    @payments.size
   end
 
   def sorted_offsets
-    @payment_with_offset_list.map(&:offset).sort
+    @payments.map(&:offset).sort
   end
 
   def effective_interest_rate
     previous_iteration = 0.0
     next_iteration = previous_iteration
     MAX_NUM_ITERATIONS.times do
-      nominator = evaluate(@payment_with_offset_list, previous_iteration)
-      denominator = evaluate(@payment_with_offset_list_derivative, previous_iteration)
+      nominator = evaluate(@payments, previous_iteration)
+      denominator = evaluate(@payments_derivative, previous_iteration)
       next_iteration = previous_iteration - (nominator / denominator)
       if (next_iteration - previous_iteration).abs < MAX_DIFF_ITERATIONS
         return next_iteration
@@ -69,9 +69,9 @@ class PaymentWithOffsetList
     payment_offset
   end
 
-  def payment_with_offset_list_derivative(payment_with_offset_list)
+  def payments_derivative(payments)
     derivative = []
-    payment_with_offset_list.each do |payment_with_offset|
+    payments.each do |payment_with_offset|
       amount = payment_with_offset.amount
       offset = payment_with_offset.offset
       derivative << PaymentWithOffset.new(-1 * offset * amount, - (- offset - 1))
