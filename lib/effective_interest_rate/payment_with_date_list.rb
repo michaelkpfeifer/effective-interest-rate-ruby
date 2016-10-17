@@ -20,4 +20,9 @@ class PaymentWithDateList
   def max_date
     @payment_with_date_list.max.date
   end
+
+  def effective_interest_rate
+    payment_with_offset_list = PaymentWithOffsetList.new(self)
+    payment_with_offset_list.effective_interest_rate
+  end
 end
