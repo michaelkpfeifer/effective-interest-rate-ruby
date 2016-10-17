@@ -20,7 +20,7 @@ class PaymentWithOffsetList
       @payments << payment_with_offset
     end
 
-    @payments_derivative = payments_derivative(@payments)
+    @payments_derivative = payments_derive(@payments)
   end
 
   def size
@@ -69,7 +69,7 @@ class PaymentWithOffsetList
     payment_offset
   end
 
-  def payments_derivative(payments)
+  def payments_derive(payments)
     derivative = []
     payments.each do |payment_with_offset|
       amount = payment_with_offset.amount
