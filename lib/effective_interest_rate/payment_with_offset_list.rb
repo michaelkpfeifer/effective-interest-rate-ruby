@@ -1,4 +1,7 @@
 class PaymentWithOffsetList
+  MAX_NUM_ITERATIONS = 16
+  MAX_DIFF_ITERATIONS = 10**-10
+
   attr_accessor :payment_with_offset_list
   attr_accessor :payment_with_offset_list_derivative
 
@@ -29,14 +32,20 @@ class PaymentWithOffsetList
   end
 
   def effective_interest_rate
-    value = 0.0
-    8.times do
-      nominator = evaluate(@payment_with_offset_list, value)
-      denominator = evaluate(@payment_with_offset_list_derivative, value)
-      value = value - (nominator / denominator)
+    previous_iteration = 0.0
+    next_iteration = previous_iteration
+    MAX_NUM_ITERATIONS.times do
+      nominator = evaluate(@payment_with_offset_list, previous_iteration)
+      denominator = evaluate(@payment_with_offset_list_derivative, previous_iteration)
+      next_iteration = previous_iteration - (nominator / denominator)
+      if (next_iteration - previous_iteration).abs < MAX_DIFF_ITERATIONS
+        return next_iteration
+      end
+
+      previous_iteration = next_iteration
     end
 
-    value
+    next_iteration
   end
 
   private
