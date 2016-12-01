@@ -1,5 +1,4 @@
-require 'test/unit'
-require 'effective_interest_rate'
+require 'test_helper'
 
 class PaymentWithOffsetTest < Test::Unit::TestCase
   def test_order
