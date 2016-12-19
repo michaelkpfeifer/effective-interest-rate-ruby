@@ -8,7 +8,7 @@ class EffectiveInterestRateCalculatorTest < Test::Unit::TestCase
     @payment_with_date4 = PaymentWithDate.new(-100, Date.new(2015, 7, 1))
   end
 
-  def test_effective_interest_rate_for_trivial_case
+  def test_effective_interest_rate_for_very_simple_case
     eirc = EffectiveInterestRateCalculator.new
     eirc << @payment_with_date1
     eirc << @payment_with_date2
@@ -16,7 +16,7 @@ class EffectiveInterestRateCalculatorTest < Test::Unit::TestCase
     assert_in_delta(0.0, eirc.effective_interest_rate, 10**-6)
   end
 
-  def test_effective_interest_rate_for_simple_nontrivial_case
+  def test_effective_interest_rate_for_simple_case
     eirc = EffectiveInterestRateCalculator.new
     eirc << @payment_with_date1
     eirc << @payment_with_date2
