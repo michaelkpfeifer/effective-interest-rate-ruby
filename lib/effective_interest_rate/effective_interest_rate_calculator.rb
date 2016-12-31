@@ -2,6 +2,18 @@ class EffectiveInterestRateCalculator
   MAX_NUM_ITERATIONS = 16
   MAX_DIFF_ITERATIONS = 10**-10
 
+  # Essentially, @payments_with_offset is a list
+  #   [(A_1, t_1), ..., (A_n, t_n)]
+  # of payments A_k with offsets t_k (in years). @payments_with_offset
+  # defines a function
+  #   S(X) = \sum_{k = 1}^n A_n * (1 + X)^{-t_k}.
+  # The derivative of S is
+  #   S'(X) = \sum_{k = 1}^n A_n * (-t_k) * (1 + X)^{-t_k - 1}.
+  # The derivative has the same structure as the original function, so
+  # we can store it in the same way. We simply represent the
+  # derivative as
+  #   [(-t_1 * A_1, -t_1 - 1), ..., (-t_k * A_k, -t_k - 1)].
+
   def initialize
     @payments_with_date = []
   end
