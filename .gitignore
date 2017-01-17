@@ -1,4 +1,5 @@
 .byebug_history
 .rubocop.yml
 project.org
+Makefile
 coverage/
