@@ -1,5 +1,5 @@
 class EffectiveInterestRateCalculator
-  MAX_NUM_ITERATIONS = 16
+  MAX_NUM_ITERATIONS = 64
   MAX_DIFF_ITERATIONS = 10**-10
 
   # Essentially, @payments_with_offset is a list
@@ -73,7 +73,7 @@ class EffectiveInterestRateCalculator
   end
 
   def effective_interest_rate_loop
-    previous_iteration = 0.0
+    previous_iteration = -0.75
     next_iteration = previous_iteration
     MAX_NUM_ITERATIONS.times do
       nominator = evaluate(@payments_with_offset, previous_iteration)

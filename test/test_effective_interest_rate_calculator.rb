@@ -35,4 +35,11 @@ class EffectiveInterestRateCalculatorTest < Test::Unit::TestCase
     end
     assert_in_delta(1.91 / 100, eirc.effective_interest_rate, 10**-4)
   end
+
+  def test_effective_interest_rate_for_simple_real_life_case
+    eirc = EffectiveInterestRateCalculator.new
+    eirc << PaymentWithDate.new(-1_065.25, Date.new(2011, 4, 21))
+    eirc << PaymentWithDate.new(130.69, Date.new(2014, 5, 23))
+    assert_in_delta(-0.4951, eirc.effective_interest_rate, 0.01)
+  end
 end
