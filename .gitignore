@@ -2,4 +2,5 @@
 .rubocop.yml
 project.org
 Makefile
+effective_interest_rate-*.gem
 coverage/
