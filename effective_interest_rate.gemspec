@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "effective_interest_rate"
-  s.version = "0.0.0"
+  s.version = "0.0.1"
   s.date = "2017-01-17"
   s.summary = "Compute effective interest rate"
   s.description = "Compute effective interest rates in very general situations."
