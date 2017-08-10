@@ -2,9 +2,9 @@
 
 Gem::Specification.new do |s|
   s.name = "effective_interest_rate"
-  s.version = "0.0.1"
-  s.date = "2017-01-17"
-  s.summary = "Compute effective interest rate"
+  s.version = "0.0.2"
+  s.date = "2017-08-10"
+  s.summary = "Compute effective interest rates"
   s.description = "Compute effective interest rates in very general situations."
   s.authors = ["Michael Pfeifer"]
   s.email = ["michael.k.pfeifer@googlemail.com"]
@@ -17,6 +17,5 @@ Gem::Specification.new do |s|
              "test/test_helper.rb",
              "test/test_payment_with_date.rb",
              "test/test_payment_with_offset.rb"]
-  s.homepage = "http://rubygems.org/effective_interest_rate"
   s.license = "MIT"
 end
