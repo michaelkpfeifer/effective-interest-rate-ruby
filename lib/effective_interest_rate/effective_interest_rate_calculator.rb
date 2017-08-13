@@ -32,7 +32,7 @@ class EffectiveInterestRateCalculator
 
   def convert_to_payments_with_offset
     first_payment_date = @payments_with_date.min.date
-    first_payment_offset = payment_offset_in_year(first_payment_date)
+    first_payment_offset = offset_in_year(first_payment_date)
     first_payment_year = first_payment_date.year
 
     payments_with_offset = []
@@ -48,12 +48,12 @@ class EffectiveInterestRateCalculator
 
   def payment_offset(payment_with_date, first_payment_year, first_payment_offset)
     year_difference = payment_with_date.date.year - first_payment_year
-    offset = payment_offset_in_year(payment_with_date.date)
+    offset = offset_in_year(payment_with_date.date)
     offset = offset + year_difference - first_payment_offset
     offset
   end
 
-  def payment_offset_in_year(date)
+  def offset_in_year(date)
     if date.leap?
       payment_offset = (date.yday - 1) / 366.0
     else
