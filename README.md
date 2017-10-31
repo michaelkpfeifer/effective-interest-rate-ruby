@@ -41,6 +41,14 @@ given series of payments.
     eirc.effective_interest_rate
     => 0.06394102980498531
 
+## Tests
+
+Simply run
+
+    $ rake test
+
+to run the tests.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at
