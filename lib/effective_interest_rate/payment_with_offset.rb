@@ -1,15 +1,20 @@
 class PaymentWithOffset
   include Comparable
 
-  attr_accessor :amount
-  attr_accessor :offset
+  attr_reader :amount
+  attr_reader :offset
 
   def initialize(amount, offset)
-    @amount = amount
-    @offset = offset
+    self.amount = amount
+    self.offset = offset
   end
 
   def <=>(other)
-    @offset <=> other.offset
+    offset <=> other.offset
   end
+
+  private
+
+  attr_writer :amount
+  attr_writer :offset
 end
