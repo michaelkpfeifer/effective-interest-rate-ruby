@@ -12,7 +12,7 @@ The simplest way to install the required classes is to generate a gem
 and use this gem in your application.
 
     $ gem build effective_interest_rate.gemspec
-    $ gem install effective_interest_rate-0.0.2.gem
+    $ gem install effective_interest_rate-0.0.4.gem
 
 Add the following line to your application's Gemfile:
 
